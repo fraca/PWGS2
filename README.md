@@ -36,3 +36,28 @@ out=output directory
 OUTPUT  
 out_SNP directory with the annotated SNPs  
 out_INDEL directory with the annotated INDEL  
+
+
+
+
+##Get weighted median for linear model.  
+It calculates the median and the mean of different statistics  of NPStat (Ferretti et al 2013) and NI (Rand and Kann 1996) and DoS (Stoletzki and Eyre-Walker 2011). It calculates the quantiles on the weighted median based on the number of the bp sequenced in the window analyzed. Run the function dist_np2 in the R script npstat_w_median.R  
+
+INPUT  
+fold_pops=c( "/home/marco/pool_first/ge_int/p07C_5000_CDS_SNP_scaf/", "/home/marco/pool_first/ge_int/p07D_5000_CDS_SNP_scaf/", "/home/marco/pool_first/ge_int/p11A_5000_CDS_SNP_scaf/")
+ 
+name_pops=c( "07C", "07D","11A")
+snp_call="snape"
+sel_bp=1
+sel_S=0
+name_out=paste("/home/marco/pool_first/gen_div/prova",snp_call,sel_bp,sel_S,sep="_")
+dist_np2(fold_pops,name_pops,snp_call,sel_bp,sel_S,name_out,scaffold=1:3)
+
+OUTPUT  
+table with summary foreach pop.  
+
+
+##Phylogeny with TreeMix.  
+
+
+
