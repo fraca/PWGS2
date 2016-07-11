@@ -62,7 +62,7 @@ The script **merge_Treemix.sh** create the input files for TreeMix (Pickrell & P
 
 **merge_Treemix.sh**  
 
-It selects the biallelic SNPs present in regions sequenced in all populations and create the input file for TreeMix. It uses the functions in the R script **merge_SNPs_pops.R** and **trial_min.R**  
+It selects the biallelic SNPs present in regions sequenced in all populations and create the input file for TreeMix. It uses the functions in the R script **merge_SNPs_pops.R**, **Varscan2Freq.R** and **trial_min.R**  
 
 INPUT  
 
