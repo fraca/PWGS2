@@ -3,15 +3,11 @@
 # Request "/bin/bash" as shell
 #$ -S /bin/bash
 
-#$ -pe smp 1
-
 # Start the job from the current working directory
 #$ -cwd
 
 # Merge standard output and standard error
 #$ -j y
-
-
 
 ###############################################################################
 
@@ -24,13 +20,12 @@ module load R/3.2.4-goolf-1.7.20
 module load GCC/4.9.2
 
 
-
-$bin_dir"treemix" -i $in_file -root pHa31 -k $link -m $mig -se -global -o $name_out"_m"$mig"/t_"${SGE_TASK_ID} > $TMPDIR"/ciao"
+$bin_dir"treemix" -i $in_file -root pHa31 -k $link -global -o $name_out"_nomig/t_"${SGE_TASK_ID} > $TMPDIR"/ciao"
   
-Rscript graph_Treemix.R $name_out"_m"$mig"/t_"${SGE_TASK_ID} $ord_pop
+Rscript graph_Treemix.R $name_out"_nomig/t_"${SGE_TASK_ID} $ord_pop
   
-echo -e "t_"${SGE_TASK_ID} >> $name_out"_m"$mig"_llik"
-cat $name_out"_m"$mig"/t_"${SGE_TASK_ID}".llik" >> $name_out"_m"$mig"_llik"
+echo -e "t_"${SGE_TASK_ID} >> $name_out"_nomig_llik"
+cat $name_out"_nomig/t_"${SGE_TASK_ID}".llik" >> $name_out"_nomig_llik"
 
 
 

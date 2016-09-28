@@ -14,7 +14,7 @@ Software used:
 
 - SnpEff (Cingolani et al. 2012)
 - SeqinR (Charif & Lobry et al. 2007)
-- bedtools (BEDTools, Quinlan et al. 2010)
+- BEDTools (BEDTools, Quinlan et al. 2010)
 - R Core Team (2016)
 - TreeMix (Pickrell & Pritchard 2012)
 
@@ -57,55 +57,70 @@ OUTPUT
 table with summary foreach pop.  
 
 
-##Phylogeny with TreeMix.  
-The script **merge_Treemix.sh** create the input files for TreeMix (Pickrell & Pritchard 2012). The script **treemix_ini.sh** run TreeMix program. This pipeline is designed to run on sciCORE HPC with qsub command.  
+##Explanatory variables for linear model  
+The script **linear_model_input_table_fin.R** calculates the explanatory for the linear model.
 
-**merge_Treemix.sh**  
 
-It selects the biallelic SNPs present in regions sequenced in all populations and create the input file for TreeMix. It uses the functions in the R script **merge_SNPs_pops.R**, **Varscan2Freq.R** and **trial_min.R**  
+##Merging of the SNP__
+It merge the SNPs called by Varscan. It retain only the SNP biallelic (between populations), present in min_pop populations, that has min_freq allele frequency and that has min_MAF MAF (minor allele frequency). It prepare the input file for Treemix and Baypass. It use BEDTools,**snp_merge_scicore1.R** and **snp_merge3_MAF.R**  
 
+**snp_merge_scicore1.R**  
 INPUT  
+folder_in= folder with the output of PWGS  
+mod= genomic region (tot, intergenic, cds ...)  
+name_pops= selected populations  
+scafs= scaffold  
+min_freq= minimum frequency to retain a SNP  
+min_pop= minimum number of populations where a SNP have to be present.
+nome_out= Output name.
 
-fold_pops= names of the populations  
-folder=folder with the VarScan SNPs  
-type= type of region to analyze  
-nome_out=output name  
-min_pop= minimum number of populations where the SNP is present  
-min_freq= minimum frequency for a SNPs  
 
 OUTPUT  
+nome_out_scaf_stat2 info file  
+nome_out_scaf table with all the SNPs  
+nome_out_scaf_tripop table with triallelic SNPs  
+nome_out_scaf_meancov Mean read depth  
 
-nome_out_varscan.TreeMix.gz input file for TreeMix  
-nome_out_varscan_clean.BED table with biallelic SNPs present in regions sequenced in all populations  
-nome_out_varscan_clean_col colnames of the table above  
-nome_out_varscan table with all the SNPs  
-nome_out_varscan_col colnames of the table above  
-nome_out_varscan_clean_rfixed table with SNPs fixed in all populations  
-nome_out_varscan_clean_rmin_freq table with SNPs that have frequency less than min_freq in all populations  
-nome_out_varscan_clean_rmin_pop table with SNPs that are present in less than min_pop  
-nome_out_varscan_clean_rtri table with triallelic SNPs  
-nome_out_varscan_clean_stat print the number of SNPs removed at each step  
+**snp_merge3_MAF.R**  
+INPUT  
+name_tab= Input table from **snp_merge_scicore1.R**  
+min_MAF= minimum total MAF (across all populations) to retain a SNPs  
+min_pop= minimum number of populations where a SNP have to be present  
+pop_sel= selected populations  
+name_out= Output name  
+
+OUTPUT  
+name_out_min_MAF_min_pop_stat3=info file  
+name_out_min_MAF_min_pop.vcf= vcf file with popsitions  
+name_out_min_MAF_min_pop.geno= table with number of reference and alternative alleles  
+name_out_min_MAF_min_pop_pops= names of populations analyzed  
 
 
-
+##Relatedness tree with TreeMix.  
+It create relatedness trees with migration events. The script **treemix_ini.sh** run TreeMix program and call **treemix_work.sh** and **treemix_work_no_mig.sh**. This pipeline is designed to run on sciCORE HPC with qsub command.  
 
 **treemix_ini.sh**  
-It run maximum likelihood trees done with TreeMix. It use the **graph_Treemix.R**, **plotting_funcs.R** and **treemix_work.sh** scripts.
+It run maximum likelihood trees done with TreeMix. It use the **graph_Treemix.R**, **plotting_funcs.R**, **treemix_work.sh**, **treemix_work_no_mig.sh**.
+
 
 INPUT  
 
-bin_dir= directory with the executable files  
-in_file= table with biallelic SNPs present in regions sequenced in all populations  
-in_pops= colnames of the table above  
-ord_pop= list of the names of the populations in the order you would like
-them to be plotted  
-link= number of SNPs for each block (500)  
-n_sim= number of tree to generate  
-migs= number of migration events (1 2 3 4 5 6)  
+ord_pop= order of populations  
+migs= number of migration events  
+in_file= input file for treemix  
+link= block of SNPs (for linkage disequilibrium)  
 name_out= output name  
 
+n_sim= number of simulations  
+
 OUTPUT  
+
 directory with the TreeMix trees and the graph trees  
 name_out_llik It print the inital and final likelihood for each tree  
+
+##Baypass analysis  
+
+
+
 
 
