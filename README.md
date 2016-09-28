@@ -61,7 +61,7 @@ table with summary foreach pop.
 The script **linear_model_input_table_fin.R** calculates the explanatory for the linear model.
 
 
-##Merging of the SNP__
+##Merging of the SNP.  
 It merge the SNPs called by Varscan. It retain only the SNP biallelic (between populations), present in min_pop populations, that has min_freq allele frequency and that has min_MAF MAF (minor allele frequency). It prepare the input file for Treemix and Baypass. It use BEDTools,**snp_merge_scicore1.R** and **snp_merge3_MAF.R**  
 
 **snp_merge_scicore1.R**  
