@@ -18,12 +18,12 @@ Software used:
 - R Core Team (2016)
 - TreeMix (Pickrell & Pritchard 2012)
 
-##Create reference genome of *Arabidopsis thaliana*.   
+## Create reference genome of *Arabidopsis thaliana*.   
 It uses the multiple genome alignment (http://pipeline.lbl.gov/downloads.shtml) between *A. thaliana* (TIAR 10) and *A. lyrata*  (version 1) done with GenomeVISTA (Dubchak et al. 2009). First it sorts the aligned regions in an ascending order according to alignment score minus the number of gap in *A. thaliana* and *A. lyrata*. After it replace the 8 scaffold of *A. lyrata* with the aligned regions of *A. thaliana*. It start from the aligned region with lower score. The regions without alignment are encoded with N.  
 
 It uses the functions in the R script **ref_thaliana.R** and the script **prepmfa.sh**.
 
-##Annotation with SnpEff.  
+## Annotation with SnpEff.  
 It annotates the INDEL and SNPs called by VarScan with the new annotation of *A. lyrata* (Rawat et al. 2015). The script **PWGS2_snpEff_genome_build.sh** creates the database for SnpEff. The script **PWGS2_snpEff.sh** annotates the INDEL and SNPs for each population.  
 
 INPUT  
@@ -41,7 +41,7 @@ out_INDEL directory with the annotated INDEL
 
 
 
-##Weighted median of NPStat output.  
+## Weighted median of NPStat output.  
 It calculates the median and the mean of different statistics  of NPStat (Ferretti et al 2013). It calculates the quantiles on the weighted median based on the number of the bp sequenced in the window analyzed. Run the function dist_np2 in the R script **npstat_w_median.R**  
 
 INPUT  
@@ -57,12 +57,12 @@ OUTPUT
 table with summary foreach pop.  
 
 
-##Explanatory variables for linear model  
+## Explanatory variables for linear model  
 The script **linear_model_input_table_fin.R** calculates the explanatory for the linear model.
 
 
-##Merging of the SNP.  
-It merge the SNPs called by Varscan. It retain only the SNP biallelic (between populations), present in min_pop populations, that has min_freq allele frequency and that has min_MAF MAF (minor allele frequency). It prepare the input file for Treemix and Baypass. It use BEDTools,**snp_merge_scicore1.R** and **snp_merge3_MAF.R**  
+## Merging of the SNP.  
+It merges the SNPs called by Varscan. It retains only the SNP biallelic (between populations), present in min_pop populations, that has min_freq allele frequency and that has min_MAF MAF (minor allele frequency). It prepares the input file for Treemix and Baypass. It uses BEDTools,**snp_merge_scicore1.R** and **snp_merge3_MAF.R**  
 
 **snp_merge_scicore1.R**  
 INPUT  
@@ -96,11 +96,11 @@ name_out_min_MAF_min_pop.geno= table with number of reference and alternative al
 name_out_min_MAF_min_pop_pops= names of populations analyzed  
 
 
-##Relatedness tree with TreeMix.  
-It create relatedness trees with migration events. The script **treemix_ini.sh** run TreeMix program and call **treemix_work.sh** and **treemix_work_no_mig.sh**. This pipeline is designed to run on sciCORE HPC with qsub command.  
+## Relatedness tree with TreeMix.  
+It creates relatedness trees with migration events. The script **treemix_ini.sh** run TreeMix program and call **treemix_work.sh** and **treemix_work_no_mig.sh**. This pipeline is designed to run on sciCORE HPC with qsub command.  
 
 **treemix_ini.sh**  
-It run maximum likelihood trees done with TreeMix. It use the **graph_Treemix.R**, **plotting_funcs.R**, **treemix_work.sh**, **treemix_work_no_mig.sh**.
+It run maximum likelihood trees done with TreeMix. It uses the **graph_Treemix.R**, **plotting_funcs.R**, **treemix_work.sh**, **treemix_work_no_mig.sh**.
 
 
 INPUT  
@@ -118,7 +118,7 @@ OUTPUT
 directory with the TreeMix trees and the graph trees  
 name_out_llik It print the inital and final likelihood for each tree  
 
-##Baypass analysis  
+## Baypass analysis  
 
 
 
