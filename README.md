@@ -120,6 +120,26 @@ name_out_llik It print the inital and final likelihood for each tree
 
 ## Baypass analysis  
 
+## SIFT analysis  
+
+. The script **XXX_ini.sh** run SIFT program and call **XXX_work.sh**. This pipeline is designed to run on sciCORE HPC with qsub command.  
+
+**XXX_ini.sh**  
+It perform the SIFT analysis. It uses the **XXX.R**,
+
+
+INPUT  
+
+ord_pop= order of populations  
+migs= number of migration events  
+in_file= input file for treemix  
+link= block of SNPs (for linkage disequilibrium)  
+name_out= output name  
+
+n_sim= number of simulations  
+
+OUTPUT  
+
 
 
 
