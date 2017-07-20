@@ -121,14 +121,9 @@ name_out_llik It print the inital and final likelihood for each tree
 ## Baypass analysis  
 
 ## SIFT4G analysis  
+SIFT4G predict whether an amino acid substitustion is deleterious. The script **SIFT_ini.sh** run SIFT program and call **SIFT_work.sh**, after run **SIFT_fin.sh**. This pipeline is designed to run on sciCORE HPC with qsub command.   
 
-The script **SIFT_ini.sh** run SIFT program and call **SIFT_work.sh**, after run **SIFT_fin.sh**. This pipeline is designed to run on sciCORE HPC with qsub command.  
 
-**XXX_ini.sh**  
-It perform the SIFT analysis. 
-/home/marco/Dropbox/github/PWGS2/SIFT_fin.sh
-/home/marco/Dropbox/github/PWGS2/SIFT_ini.sh
-/home/marco/Dropbox/github/PWGS2/SIFT_work.sh
 
 INPUT  
 
