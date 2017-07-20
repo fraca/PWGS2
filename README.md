@@ -120,27 +120,33 @@ name_out_llik It print the inital and final likelihood for each tree
 
 ## Baypass analysis  
 
-## SIFT analysis  
+## SIFT4G analysis  
 
-. The script **XXX_ini.sh** run SIFT program and call **XXX_work.sh**. This pipeline is designed to run on sciCORE HPC with qsub command.  
+The script **SIFT_ini.sh** run SIFT program and call **SIFT_work.sh**, after run **SIFT_fin.sh**. This pipeline is designed to run on sciCORE HPC with qsub command.  
 
 **XXX_ini.sh**  
-It perform the SIFT analysis. It uses the **XXX.R**,
-
+It perform the SIFT analysis. 
+/home/marco/Dropbox/github/PWGS2/SIFT_fin.sh
+/home/marco/Dropbox/github/PWGS2/SIFT_ini.sh
+/home/marco/Dropbox/github/PWGS2/SIFT_work.sh
 
 INPUT  
 
-ord_pop= order of populations  
-migs= number of migration events  
-in_file= input file for treemix  
-link= block of SNPs (for linkage disequilibrium)  
-name_out= output name  
+scaf_num= scaffold names   
+fold_pops= popolation names  
 
-n_sim= number of simulations  
+n_threads= number cores  
+folder= input folder  
+type= type of region (tot, int, CDS)  
+
+out_dir= output directory
+
+sift_pro= location SIFT4G_Annotator_v2.4.jar
+database= database SIFT4G (v.1.0.23)
 
 OUTPUT  
 
-
+The SIFT4G_Annotator_v2 output files in the output directory  
 
 
 
