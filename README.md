@@ -1,14 +1,10 @@
 PWGS2
 =====
 
-It analyzes the output of the PWGS pipeline.
+Severals scripts that perform analysis on pool-seq data obtained with the [PWGS pipeline](https://github.com/fraca/PWGS). They have been used in:
 
-
-- Create reference genome of *Arabidopsis thaliana*.
-- Annotation with SnpEff.
-- Weighted median of NPStat output.
-- Phylogeny with TreeMix.
-
+- [ M. Fracassetti "Genetic diversity and climate adaption in *Arabidopsis lyrata*"](https://edoc.unibas.ch/44796/) Ph.D thesis 
+- ["Willi Y. et al. "Accumulation of Mutational Load at the Edges of a Species Range"](https://doi.org/10.1093/molbev/msy003>")
 
 Software used:
 
@@ -120,6 +116,11 @@ name_out_llik It print the inital and final likelihood for each tree
 
 ## Baypass analysis  
 
+Baypass (Gautier 2015) is a program for the Environmental Association Analysis EAA. The input files are done with **snp_merge3_MAF.R**. First the population variant matrix is calculated and after the association with between the SNPs and the environmental variable is performed. Finally a Gene Ontology analysis is done with SNP2GO (Szkiba et al. 2014). In the script **bypass_fin_git.R** there are the scripts that I used. 
+
+
+
+
 ## SIFT4G analysis  
 SIFT4G predict whether an amino acid substitustion is deleterious. The script **SIFT_ini.sh** run SIFT program and call **SIFT_work.sh**, after run **SIFT_fin.sh**. This pipeline is designed to run on sciCORE HPC with qsub command.   
 
@@ -142,6 +143,10 @@ database= database SIFT4G (v.1.0.23)
 OUTPUT  
 
 The SIFT4G_Annotator_v2 output files in the output directory  
+
+
+## Reference
+
 
 
 
