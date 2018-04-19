@@ -115,10 +115,7 @@ directory with the TreeMix trees and the graph trees
 name_out_llik It print the inital and final likelihood for each tree  
 
 ## Baypass analysis  
-
-Baypass (Gautier 2015) is a program for the Environmental Association Analysis EAA. The input files are done with **snp_merge3_MAF.R**. First the population variant matrix is calculated and after the association with between the SNPs and the environmental variable is performed. Finally a Gene Ontology analysis is done with SNP2GO (Szkiba et al. 2014). In the script **bypass_fin_git.R** there are the scripts that I used. 
-
-
+Baypass (Gautier 2015) is a program for the Environmental Association Analysis EAA. The input files are done with **snp_merge3_MAF.R**. First the population variant matrix is calculated and after the association with between the SNPs and the environmental variable is performed. Finally a Gene Ontology analysis is done with SNP2GO (Szkiba et al. 2014). In the script **bypass_fin_git.R** there are some function in R that I used. 
 
 
 ## SIFT4G analysis  
