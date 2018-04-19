@@ -3,8 +3,8 @@ PWGS2
 
 Severals scripts that perform analysis on pool-seq data obtained with the [PWGS pipeline](https://github.com/fraca/PWGS). They have been used in:
 
-- [ M. Fracassetti "Genetic diversity and climate adaption in *Arabidopsis lyrata*"](https://edoc.unibas.ch/44796/) Ph.D thesis 
-- ["Willi Y. et al. "Accumulation of Mutational Load at the Edges of a Species Range"](https://doi.org/10.1093/molbev/msy003>")
+- [ M. Fracassetti Genetic diversity and climate adaption in *Arabidopsis lyrata*](https://edoc.unibas.ch/44796/)
+- [Willi Y. et al. Accumulation of Mutational Load at the Edges of a Species Range](https://academic.oup.com/mbe/article/35/4/781/4810769)
 
 Software used:
 
