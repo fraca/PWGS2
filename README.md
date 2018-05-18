@@ -13,7 +13,7 @@ Software used:
 - BEDTools ([BEDTools, Quinlan et al. 2010](http://bedtools.readthedocs.io/en/latest/))
 - TreeMix ([Pickrell & Pritchard 2012](https://bitbucket.org/nygcresearch/treemix/wiki/Home))
 - Baypass ([Gautier 2015](http://www1.montpellier.inra.fr/CBGP/software/baypass/))
--SIFT4G ([Vaser et al. 2016](http://sift.bii.a-star.edu.sg/sift4g/))
+- SIFT4G ([Vaser et al. 2016](http://sift.bii.a-star.edu.sg/sift4g/))
 
 ## Create reference genome of *Arabidopsis thaliana*.   
 It uses the multiple genome alignment (http://pipeline.lbl.gov/downloads.shtml) between *A. thaliana* (TIAR 10) and *A. lyrata*  (version 1) done with GenomeVISTA ([Dubchak et al. 2009](http://genome.lbl.gov/vista/index.shtml)). First it sorts the aligned regions in an ascending order according to alignment score minus the number of gap in *A. thaliana* and *A. lyrata*. After it replace the 8 scaffold of *A. lyrata* with the aligned regions of *A. thaliana*. It start from the aligned region with lower score. The regions without alignment are encoded with N.  
@@ -116,7 +116,7 @@ directory with the TreeMix trees and the graph trees
 name_out_llik It print the inital and final likelihood for each tree  
 
 ## Baypass analysis  
-Baypass ([Gautier 2015](http://www1.montpellier.inra.fr/CBGP/software/baypass/))) is a program for the Environmental Association Analysis EAA. The input files are done with **snp_merge3_MAF.R**. First the population variant matrix is calculated and after the association with between the SNPs and the environmental variable is performed. Finally a Gene Ontology analysis is done with SNP2GO (Szkiba et al. 2014). In the script **bypass_fin_git.R** there are some function in R that I used. 
+Baypass ([Gautier 2015](http://www1.montpellier.inra.fr/CBGP/software/baypass/)) is a program for the Environmental Association Analysis EAA. The input files are done with **snp_merge3_MAF.R**. First the population variant matrix is calculated and after the association with between the SNPs and the environmental variable is performed. Finally a Gene Ontology analysis is done with SNP2GO (Szkiba et al. 2014). In the script **bypass_fin_git.R** there are some function in R that I used. 
 
 
 ## SIFT4G analysis  
@@ -141,10 +141,6 @@ database= database SIFT4G (v.1.0.23)
 OUTPUT  
 
 The SIFT4G_Annotator_v2 output files in the output directory  
-
-
-## Reference
-
 
 
 
