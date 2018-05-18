@@ -8,19 +8,20 @@ Severals scripts that perform analysis on pool-seq data obtained with the [PWGS 
 
 Software used:
 
-- SnpEff (Cingolani et al. 2012)
-- SeqinR (Charif & Lobry et al. 2007)
-- BEDTools (BEDTools, Quinlan et al. 2010)
-- R Core Team (2016)
-- TreeMix (Pickrell & Pritchard 2012)
+- SnpEff ([Cingolani et al. 2012](http://snpeff.sourceforge.net/))
+- SeqinR ([Charif & Lobry et al. 2007](https://cran.r-project.org/web/packages/seqinr/index.html))
+- BEDTools ([BEDTools, Quinlan et al. 2010](http://bedtools.readthedocs.io/en/latest/))
+- TreeMix ([Pickrell & Pritchard 2012](https://bitbucket.org/nygcresearch/treemix/wiki/Home))
+- Baypass ([Gautier 2015](http://www1.montpellier.inra.fr/CBGP/software/baypass/))
+-SIFT4G ([Vaser et al. 2016](http://sift.bii.a-star.edu.sg/sift4g/))
 
 ## Create reference genome of *Arabidopsis thaliana*.   
-It uses the multiple genome alignment (http://pipeline.lbl.gov/downloads.shtml) between *A. thaliana* (TIAR 10) and *A. lyrata*  (version 1) done with GenomeVISTA (Dubchak et al. 2009). First it sorts the aligned regions in an ascending order according to alignment score minus the number of gap in *A. thaliana* and *A. lyrata*. After it replace the 8 scaffold of *A. lyrata* with the aligned regions of *A. thaliana*. It start from the aligned region with lower score. The regions without alignment are encoded with N.  
+It uses the multiple genome alignment (http://pipeline.lbl.gov/downloads.shtml) between *A. thaliana* (TIAR 10) and *A. lyrata*  (version 1) done with GenomeVISTA ([Dubchak et al. 2009](http://genome.lbl.gov/vista/index.shtml)). First it sorts the aligned regions in an ascending order according to alignment score minus the number of gap in *A. thaliana* and *A. lyrata*. After it replace the 8 scaffold of *A. lyrata* with the aligned regions of *A. thaliana*. It start from the aligned region with lower score. The regions without alignment are encoded with N.  
 
 It uses the functions in the R script **ref_thaliana.R** and the script **prepmfa.sh**.
 
 ## Annotation with SnpEff.  
-It annotates the INDEL and SNPs called by VarScan with the new annotation of *A. lyrata* (Rawat et al. 2015). The script **PWGS2_snpEff_genome_build.sh** creates the database for SnpEff. The script **PWGS2_snpEff.sh** annotates the INDEL and SNPs for each population.  
+It annotates the INDEL and SNPs called by VarScan with the new annotation of *A. lyrata* ([Rawat et al. 2015](https://doi.org/10.1371/journal.pone.0137391.s002)). The script **PWGS2_snpEff_genome_build.sh** creates the database for SnpEff. The script **PWGS2_snpEff.sh** annotates the INDEL and SNPs for each population.  
 
 INPUT  
 bin_dir= directory with the executable files  
@@ -38,7 +39,7 @@ out_INDEL directory with the annotated INDEL
 
 
 ## Weighted median of NPStat output.  
-It calculates the median and the mean of different statistics  of NPStat (Ferretti et al 2013). It calculates the quantiles on the weighted median based on the number of the bp sequenced in the window analyzed. Run the function dist_np2 in the R script **npstat_w_median.R**  
+It calculates the median and the mean of different statistics  of NPStat ([Ferretti et al 2013](https://github.com/lucaferretti/npstat)). It calculates the quantiles on the weighted median based on the number of the bp sequenced in the window analyzed. Run the function dist_np2 in the R script **npstat_w_median.R**  
 
 INPUT  
 fold_pops=folders with the VarScan SNPs  
@@ -115,7 +116,7 @@ directory with the TreeMix trees and the graph trees
 name_out_llik It print the inital and final likelihood for each tree  
 
 ## Baypass analysis  
-Baypass (Gautier 2015) is a program for the Environmental Association Analysis EAA. The input files are done with **snp_merge3_MAF.R**. First the population variant matrix is calculated and after the association with between the SNPs and the environmental variable is performed. Finally a Gene Ontology analysis is done with SNP2GO (Szkiba et al. 2014). In the script **bypass_fin_git.R** there are some function in R that I used. 
+Baypass ([Gautier 2015](http://www1.montpellier.inra.fr/CBGP/software/baypass/))) is a program for the Environmental Association Analysis EAA. The input files are done with **snp_merge3_MAF.R**. First the population variant matrix is calculated and after the association with between the SNPs and the environmental variable is performed. Finally a Gene Ontology analysis is done with SNP2GO (Szkiba et al. 2014). In the script **bypass_fin_git.R** there are some function in R that I used. 
 
 
 ## SIFT4G analysis  
